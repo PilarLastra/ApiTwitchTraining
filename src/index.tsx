@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { ExampleScreen } from "./components/screens/ExampleScreen/ExampleScreen";
+import { MainTemplate } from "./components/screens/templates/MainTamplate/MainTemplate";
 import "./index.css";
 
 import reportWebVitals from "./reportWebVitals";
@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <ExampleScreen />
+    <MainTemplate />
   </React.StrictMode>
 );
 

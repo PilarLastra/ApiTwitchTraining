@@ -1,0 +1,36 @@
+
+$secondaryColour: rgb(226, 51, 153);
+
+#searchBar{
+    background-color: transparent;
+    color: white;
+    
+    
+}
+
+#searchBar:hover{
+    border-color: $secondaryColour;
+}
+#searchBar:before{
+    border-color: $secondaryColour;
+}
+
+#searchBarIcon{
+    background-color: $secondaryColour;
+}
+
+.ant-select-active{
+    border-color: $secondaryColour !important;
+}
+
+.ant-input-selected{
+    border-color: $secondaryColour !important;
+}
+
+.ant-btn{
+    background-color: $secondaryColour !important;
+}
+
+.ant-btn-active{
+    background-color: $secondaryColour !important;
+}

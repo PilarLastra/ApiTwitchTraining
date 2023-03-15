@@ -1,0 +1,23 @@
+
+$secondaryColour: rgb(226, 51, 153);
+
+.ant-layout-sider{
+    background-color: black !important;
+  }
+
+  .ant-menu{
+    background-color: black !important;
+    margin-top: 40px;
+  }
+
+.ant-menu-item-active{
+    background-color: $secondaryColour !important;
+}
+
+.ant-menu-item-selected{
+    background-color: $secondaryColour !important;
+}
+
+.ant-menu-submenu-active{
+    background-color: $secondaryColour !important;
+}

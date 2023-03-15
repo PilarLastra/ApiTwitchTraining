@@ -1,8 +1,8 @@
 import axios, { AxiosInstance } from "axios";
 
 export const SCOPES = "user:read:email";
-export const CLIENT_ID = '';
-export const CLIENT_SECRET = '';
+export const CLIENT_ID = 'os4f56sxpvljkkph063ln94l9znudp';
+export const CLIENT_SECRET = 'zg8au0zrfb5pqbt5r73om9tk5m0v7k';
 
 
 export class ApiClient {
@@ -19,7 +19,9 @@ export class ApiClient {
     public async getStreams() {
         try {
             const result = await this.servicesAxiosInstance.get('helix/streams')
+           
             return result.data;
+            
         } catch(e) {
             return Promise.reject(e);
         }
