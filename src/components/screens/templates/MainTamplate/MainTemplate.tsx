@@ -1,5 +1,5 @@
 import React from 'react';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import { LaptopOutlined, LoadingOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { VideogameCard } from '../../../molecules/Card/VideogameCard';
@@ -13,6 +13,9 @@ import Twitch, { getToken } from 'simple-twitch-api';
 import { ApiClient, CLIENT_ID, CLIENT_SECRET, SCOPES } from "../../../../services/apiService";
 import { IStream } from '../../../../Interfaces/IStreams';
 import "./MainTemplate.scss"
+import { useGetToken } from '../../../../Hooks/useGetToken/useGetToken';
+import { useGetStreems } from '../../../../Hooks/useGetStreems/useGetStreems';
+import { StreemScreen } from '../../StreamersScreen/StreamersScreen';
 
 const { Header, Content, Sider } = Layout;
 
@@ -41,51 +44,33 @@ const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOu
   },
 );
 
+
+export const ApiContext = React.createContext({apiService: new ApiClient("")})
+
+
 export const MainTemplate = () => {
   
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const [streams, setStreams] = useState([]);
-
-
-  useEffect(() => {
-    
-    const script = async () => {
    
-      const request = await getToken(CLIENT_ID, CLIENT_SECRET, SCOPES);
-      const apiService = new ApiClient(request.access_token);
-
-      const result = await apiService.getStreams();
-
-     setStreams(result.data);
-
-  }
-    script();
-
-  }, [])
+    const {twitchApiToken, isLoading} = useGetToken();
+  
 
   {/* spinner: indicarle al user q la info esta cargando = crear un state: isLoading = true line 61 cuando result tenga data setear loading cmo false  if loading true mostrar espinner y si es false mostrar la card*/ }
       
-  const videoGameCardArray = () => {
-
-      return(
-        streams.map((item, index) => ( 
-          <VideogameCard stream={item}/>
-
-        ))
-      )
-
-
-
-  }
+  
 
 
 
   return (
    
     <Layout >
+          {isLoading ? ( 
+          <LoadingOutlined />
+          ) : (
+            <ApiContext.Provider value={{apiService: new ApiClient(twitchApiToken!.access_token)}}>
       <Header className="flex-container" id='NavBar'>
       
             <div>
@@ -128,13 +113,14 @@ export const MainTemplate = () => {
           >
             {/* Card de los juegos */}
             <div className='cards'>
-            {videoGameCardArray()}
+            <StreemScreen/>
             </div>
         
 
           </Content>
         </Layout>
       </Layout>
+      </ApiContext.Provider>)}
     </Layout>
   );
 };

@@ -1,3 +1,4 @@
+$secondaryColour: rgb(226, 51, 153);
 
 .ant-layout-content{
     background-color: black !important;
@@ -6,4 +7,33 @@
 
 .ant-card{
     margin: 10px;
+}
+
+.in-live {
+    color: white;
+    background-color: $secondaryColour;
+    border-radius: 10px;
+    width: 100px !important;
+    height: 20px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    position: absolute;
+
+    font-weight: bold;
+    font-size: 12px;
+   
+}
+
+
+
+#viewers {
+    font-weight: bold;
+    color: orange;
+
+    &:hover {
+        color: orange;
+    }
 }

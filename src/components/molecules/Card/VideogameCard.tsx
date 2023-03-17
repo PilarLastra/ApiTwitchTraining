@@ -13,7 +13,7 @@ const { Meta } = Card;
 
 export const VideogameCard = ({stream}:{stream:IStream}) => {  {/* El objeto q se recive va a tener como valor IStream */}
 
-   console.log(stream);
+
 
    const replaceImageURL = () =>{
 
@@ -28,17 +28,19 @@ export const VideogameCard = ({stream}:{stream:IStream}) => {  {/* El objeto q s
 <Card
    
     style={{ width: 300 }}
-    cover={ 
+    
+    cover={ [ 
+      <div className='in-live' >EN VIVO</div>,
       <img
+      
         alt="example"
         src= {replaceImageURL()}
-      />
-    }
+      />,
+    
+    ]}
     actions={[
-
-     <div className='in-live' ><p>EN VIVO</p></div>,
-     <p id='viewers'><i className='fa-solid fa-user'></i> {stream.viewer_count} </p>
-           
+      
+      
     ]}
   >
     <Meta

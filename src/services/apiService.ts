@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from "axios";
+import { IStreamList } from "../Interfaces/IStreamList";
 
 export const SCOPES = "user:read:email";
 export const CLIENT_ID = 'os4f56sxpvljkkph063ln94l9znudp';
@@ -16,7 +17,7 @@ export class ApiClient {
         })
     }
 
-    public async getStreams() {
+    public async getStreams(): Promise<IStreamList> {
         try {
             const result = await this.servicesAxiosInstance.get('helix/streams')
            

@@ -4,13 +4,19 @@ import { MainTemplate } from "./components/screens/templates/MainTamplate/MainTe
 import "./index.css";
 
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import { App } from "./components/screens/App.tsx/App";
+
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <MainTemplate />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>   
+    
   </React.StrictMode>
 );
 
