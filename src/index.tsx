@@ -2,10 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { MainTemplate } from "./components/screens/templates/MainTamplate/MainTemplate";
 import "./index.css";
-
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./components/screens/App.tsx/App";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+
 
 
 const root = ReactDOM.createRoot(

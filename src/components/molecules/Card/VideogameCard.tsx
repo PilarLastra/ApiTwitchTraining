@@ -1,12 +1,8 @@
 import React from 'react';
-import { CrownFilled, EditOutlined,EllipsisOutlined,EyeOutlined,SettingOutlined } from '@ant-design/icons';
 import { Avatar,Card } from 'antd';
-import {useState, useEffect} from "react";
-import Twitch, { getToken } from 'simple-twitch-api';
-import { ApiClient, CLIENT_ID, CLIENT_SECRET, SCOPES } from "../../../services/apiService";
 import { IStream } from '../../../Interfaces/IStreams';
 import "./VideogameCard.scss";
-import { ViewerCount } from '../../atoms/ViwersCount/ViwersCount';
+
 
 
 const { Meta } = Card;

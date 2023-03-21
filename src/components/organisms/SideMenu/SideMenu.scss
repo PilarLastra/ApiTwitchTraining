@@ -21,3 +21,16 @@ $secondaryColour: rgb(226, 51, 153);
 .ant-menu-submenu-active{
     background-color: $secondaryColour !important;
 }
+
+.sideMenu{
+  display: flex;
+  flex-direction: column ;
+  justify-content:left;
+  margin-top: 60px;
+  margin-left: 20px;
+  
+}
+
+.home{
+  margin-bottom: 15px;
+}

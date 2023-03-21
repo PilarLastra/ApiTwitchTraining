@@ -11,6 +11,9 @@ import {
 import type { MenuProps } from 'antd';
 import { Button, Menu } from 'antd';
 import "./SideMenu.scss";
+import { SideMenuButton } from '../../atoms/SideMenuButton/SideMenuButton';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import { StreamCardScreen } from '../../screens/StreamCardScreen/StreamCardScreen';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -35,41 +38,40 @@ const items: MenuItem[] = [
   getItem('Option 2', '2', <DesktopOutlined />),
   getItem('Option 3', '3', <ContainerOutlined />),
 
-  getItem('Navigation One', 'sub1', <MailOutlined />, [
-    getItem('Option 5', '5'),
-    getItem('Option 6', '6'),
-    getItem('Option 7', '7'),
-    getItem('Option 8', '8'),
-  ]),
-
-  getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [
-    getItem('Option 9', '9'),
-    getItem('Option 10', '10'),
-
-    getItem('Submenu', 'sub3', null, [getItem('Option 11', '11'), getItem('Option 12', '12')]),
-  ]),
 ];
 
 export const SideMenu = () => {
-  const [collapsed, setCollapsed] = useState(false);
 
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed);
-  };
+  const navigate = useNavigate();
+  
 
   return (
     <div style={{ width: 200  }}> {/* Tamaño del SideMenu */}
      
      {/* Si hubiese un boton para colapsar el menu podria iria aca */}
-      <Menu
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
-        mode="inline"
-        theme="dark"
-        inlineCollapsed={collapsed}
-        items={items}
-        id="SideMenu"
-      />
+      
+      <div className='sideMenu'>
+        <div>
+          <div className='home'>
+            <SideMenuButton title= "Home" onClick = {()=>{navigate("/home")}} />
+          </div>
+          <div className='home'>
+            <SideMenuButton title= "Top Streams"/>
+          </div>
+          <div className='home'>
+            <SideMenuButton title= "For You"/>
+          </div>
+        </div>
+       
+      
+      </div>
+      <Routes>
+             
+             <Route path='/home' element={ <StreamCardScreen/>} />
+         
+             
+           </Routes>
+
     </div>
   );
 };

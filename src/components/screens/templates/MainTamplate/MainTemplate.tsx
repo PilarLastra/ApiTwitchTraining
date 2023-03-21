@@ -1,21 +1,21 @@
 import React from 'react';
 import { LaptopOutlined, LoadingOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
-import { VideogameCard } from '../../../molecules/Card/VideogameCard';
+import {  Layout, theme } from 'antd';
 import { SearchBar } from '../../../molecules/SearchBar/SearchBar';
 import { AvatarLogo } from '../../../atoms/AvatarLogo/AvatarLogo';
 import { NavBarButton } from '../../../atoms/NavBarButton/NavBarButton';
 import { StyleTitle } from '../../../atoms/StyleTitle/StyleTitle';
 import { SideMenu } from '../../../organisms/SideMenu/SideMenu';
-import {useState, useEffect} from "react";
-import Twitch, { getToken } from 'simple-twitch-api';
-import { ApiClient, CLIENT_ID, CLIENT_SECRET, SCOPES } from "../../../../services/apiService";
-import { IStream } from '../../../../Interfaces/IStreams';
+import { ApiClient} from "../../../../services/apiService";
+
 import "./MainTemplate.scss"
 import { useGetToken } from '../../../../Hooks/useGetToken/useGetToken';
-import { useGetStreems } from '../../../../Hooks/useGetStreems/useGetStreems';
-import { StreemScreen } from '../../StreamersScreen/StreamersScreen';
+import { StreamCardScreen } from '../../StreamCardScreen/StreamCardScreen';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import { LogInTemplate } from '../LogInTemplate/LogInTemplate';
+
+
 
 const { Header, Content, Sider } = Layout;
 
@@ -56,17 +56,12 @@ export const MainTemplate = () => {
 
    
     const {twitchApiToken, isLoading} = useGetToken();
-  
+    const navigate = useNavigate();
 
   {/* spinner: indicarle al user q la info esta cargando = crear un state: isLoading = true line 61 cuando result tenga data setear loading cmo false  if loading true mostrar espinner y si es false mostrar la card*/ }
-      
-  
-
-
-
-  return (
+   return (
    
-    <Layout >
+    <Layout className='background'>
           {isLoading ? ( 
           <LoadingOutlined />
           ) : (
@@ -80,46 +75,27 @@ export const MainTemplate = () => {
                 <SearchBar />
             </div>
             <div>
-                <NavBarButton />
+                <NavBarButton title= "LOG IN" callback = {()=>{navigate("/login")}} /> {/*Consultar lo del map de botones*/}
             </div>
             <div>
-                <NavBarButton />
+                <NavBarButton title= "SING UP" callback = {()=>{navigate("/")}}/>
             </div>
             
        
        
       </Header>
-      <Layout>
-        <Sider  width={200} >
-           
-            <SideMenu />
+      
+       
+            <Routes>
+             
+              <Route path='/' element={ <StreamCardScreen/>} />
+              <Route path='/login' element={<LogInTemplate/>} />
+              
+            </Routes>
          
-        </Sider>
-        <Layout style={{ padding: '0 24px 24px'}} >
-           
-   
-
-            {/* Titulo de categoria (H1) */}
-          <StyleTitle/>
-            
-          <Content 
-            style={{
-              padding: 24,
-              margin: 0,
-              minHeight: 280,
-              background: colorBgContainer,
-            }}
-            
-          >
-            {/* Card de los juegos */}
-            <div className='cards'>
-            <StreemScreen/>
-            </div>
-        
-
-          </Content>
-        </Layout>
-      </Layout>
+      
+     
+     
       </ApiContext.Provider>)}
     </Layout>
   );

@@ -1,0 +1,23 @@
+$secondaryColour: rgb(226, 51, 153);
+
+.sideMenuButton {
+    color: white;
+    background-color: transparent ;
+    border-color: transparent;
+    cursor: pointer;
+    font-size: 25px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ 
+  }
+  
+  .sideMenuButton:hover {
+    color: $secondaryColour;
+    transition: all .3s;
+  
+  }
+  
+  .sideMenuButton:hover:before {
+  
+        color: $secondaryColour;
+  }
+  
