@@ -2,12 +2,14 @@ import React from 'react';
 import { Avatar,Card } from 'antd';
 import { IStream } from '../../../Interfaces/IStreams';
 import "./VideogameCard.scss";
+import { IUser } from '../../../Interfaces/IUser';
 
 
 
 const { Meta } = Card;
 
-export const VideogameCard = ({stream}:{stream:IStream}) => {  {/* El objeto q se recive va a tener como valor IStream */}
+
+export const VideogameCard = ({stream}:{stream:IStream}, {user}:{user:IUser}) => {  {/* El objeto q se recive va a tener como valor IStream */}
 
 
 

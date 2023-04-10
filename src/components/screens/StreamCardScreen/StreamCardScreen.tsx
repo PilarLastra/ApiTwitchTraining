@@ -9,11 +9,13 @@ import Sider from "antd/es/layout/Sider";
 import { Content } from "antd/es/layout/layout";
 import { StyleTitle } from "../../atoms/StyleTitle/StyleTitle";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import { useGetUserById } from "../../../Hooks/useGetUsersById/useGetUsersById";
 
 
 export const StreamCardScreen = () => {
 
     const {streamsData, isLoading} = useGetStreems();
+    
     const navigate = useNavigate();
 
     const {
@@ -22,7 +24,7 @@ export const StreamCardScreen = () => {
     
 
     const videoGameCardArray = () => {
-
+      
         return(
             streamsData!.data.map((item, index) => ( 
             
@@ -44,7 +46,7 @@ export const StreamCardScreen = () => {
    
 
             {/* Titulo de categoria (H1) */}
-          <StyleTitle/>
+          <StyleTitle title="Top Streams" />
             
           <Content 
             style={{
@@ -68,19 +70,8 @@ export const StreamCardScreen = () => {
         
         </Layout>
       </Layout>
-      
-          
-       
-        
+         
 
     )
-
-
-
-
-
-
-
-
 
 }

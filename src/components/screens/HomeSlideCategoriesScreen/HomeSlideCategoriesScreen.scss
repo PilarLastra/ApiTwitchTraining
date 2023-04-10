@@ -1,0 +1,20 @@
+#gameCard{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start ;
+  
+    
+}
+
+.ant-layout-content{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start ;
+}
+
+.slider-container{
+
+    margin: 0 auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}

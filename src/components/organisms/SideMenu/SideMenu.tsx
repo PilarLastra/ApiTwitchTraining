@@ -14,6 +14,8 @@ import "./SideMenu.scss";
 import { SideMenuButton } from '../../atoms/SideMenuButton/SideMenuButton';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { StreamCardScreen } from '../../screens/StreamCardScreen/StreamCardScreen';
+import { SmallCard } from '../../molecules/SmallCard/SmallCard';
+import { HomeTemplate } from '../../screens/templates/HomeTemplate/HomeTemplate';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -40,7 +42,7 @@ const items: MenuItem[] = [
 
 ];
 
-export const SideMenu = () => {
+export const SideMenu = ( props:any ) => {
 
   const navigate = useNavigate();
   
@@ -53,24 +55,23 @@ export const SideMenu = () => {
       <div className='sideMenu'>
         <div>
           <div className='home'>
-            <SideMenuButton title= "Home" onClick = {()=>{navigate("/home")}} />
+            <SideMenuButton title= "Home" callback = {()=>{navigate("/")}} />
           </div>
           <div className='home'>
-            <SideMenuButton title= "Top Streams"/>
+            <SideMenuButton title= "Top Streams" callback= {()=>{navigate("/TopStreams")}} />
           </div>
           <div className='home'>
             <SideMenuButton title= "For You"/>
+    
+          </div>
+          <div>
+       
           </div>
         </div>
        
       
       </div>
-      <Routes>
-             
-             <Route path='/home' element={ <StreamCardScreen/>} />
-         
-             
-           </Routes>
+    
 
     </div>
   );

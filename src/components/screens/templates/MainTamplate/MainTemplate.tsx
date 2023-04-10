@@ -14,6 +14,8 @@ import { useGetToken } from '../../../../Hooks/useGetToken/useGetToken';
 import { StreamCardScreen } from '../../StreamCardScreen/StreamCardScreen';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { LogInTemplate } from '../LogInTemplate/LogInTemplate';
+import { HomeTemplate } from '../HomeTemplate/HomeTemplate';
+import { Spinning } from '../../../atoms/Spining/Spinning';
 
 
 
@@ -63,13 +65,13 @@ export const MainTemplate = () => {
    
     <Layout className='background'>
           {isLoading ? ( 
-          <LoadingOutlined />
+          <Spinning />
           ) : (
             <ApiContext.Provider value={{apiService: new ApiClient(twitchApiToken!.access_token)}}>
       <Header className="flex-container" id='NavBar'>
       
             <div>
-                <AvatarLogo />
+                <AvatarLogo callback = {()=>{navigate("/")}} />
             </div>
             <div id="searchBar">
                 <SearchBar />
@@ -78,8 +80,9 @@ export const MainTemplate = () => {
                 <NavBarButton title= "LOG IN" callback = {()=>{navigate("/login")}} /> {/*Consultar lo del map de botones*/}
             </div>
             <div>
-                <NavBarButton title= "SING UP" callback = {()=>{navigate("/")}}/>
+                <NavBarButton title= "SING UP" callback = {()=>{navigate("/login")}}/>
             </div>
+          
             
        
        
@@ -88,8 +91,9 @@ export const MainTemplate = () => {
        
             <Routes>
              
-              <Route path='/' element={ <StreamCardScreen/>} />
+              <Route path='/' element={ <HomeTemplate />} />
               <Route path='/login' element={<LogInTemplate/>} />
+              <Route path='/TopStreams' element={<StreamCardScreen/>} />
               
             </Routes>
          
