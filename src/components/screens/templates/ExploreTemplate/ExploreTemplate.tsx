@@ -6,16 +6,17 @@ import Sider from "antd/es/layout/Sider";
 import { Content } from "antd/es/layout/layout";
 import { StyleTitle } from "../../../atoms/StyleTitle/StyleTitle";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import "./HomeTemplate.scss";
+import "./ExploreTemplate.scss";
 import { GameCard } from "../../../molecules/GameCard/GameCard";
 import { useGetTopGames } from "../../../../Hooks/useGetGames/useGetTopGames";
 import { Spinning } from "../../../atoms/Spining/Spinning";
 import { motion } from "framer-motion";
 import { HomeSliderCategoriesScreen } from "../../HomeSlideCategoriesScreen/HomeSlideCategoriesScreen";
 import { HomeSlideStreamByGameScreen } from "../../HomeSlideStreamByGameScreen/HomeSlideStreamByGameScreen";
+import { NavBarButton } from "../../../atoms/NavBarButton/NavBarButton";
 
 
-export const HomeTemplate = (props:any) => {
+export const ExploreTemplate = (props:any) => {
 
 
     const {gamesData, isLoading} = useGetTopGames();
@@ -26,7 +27,7 @@ export const HomeTemplate = (props:any) => {
       return(
         gamesData!.data.map((item, index) => ( 
           
-                <HomeSlideStreamByGameScreen title={item.name} id={item.id} key= {item.id} />
+                <HomeSlideStreamByGameScreen title={item.name} id={item.id} />
           ))
         )
   }
@@ -47,20 +48,24 @@ export const HomeTemplate = (props:any) => {
           </Sider>
 
         <Layout>
-            <div className="categories">
-
-              <div>
-                <HomeSliderCategoriesScreen/>
+            <div >
+                <div id="title">
+                    <StyleTitle title = "Explorar"/>
+                </div>
+              <div id="subTitles">
+                <div>
+                    <NavBarButton title="Categorias" callback = {()=>{navigate("/Categories")}} />
+                </div>
+                <div>
+                    <NavBarButton title="Canales en Directo" callback = {()=>{navigate("/Streams")}}/>
+                </div>
               </div>
-              <div>
-              {isLoading ? 
-              <LoadingOutlined /> : <div> {StreamCategoriesCardArray()} </div> }
                
               </div>
 
 
 
-            </div>
+           
         </Layout>
        
         

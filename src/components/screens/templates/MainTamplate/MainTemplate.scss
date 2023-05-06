@@ -43,3 +43,10 @@
   .background{
     background-color: black;
   }
+
+  .navBarButtons{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+   
+  }

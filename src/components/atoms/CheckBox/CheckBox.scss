@@ -1,0 +1,12 @@
+
+$secondaryColour: rgb(226, 51, 153);
+
+
+.ant-checkbox-inner{
+    background-color: $secondaryColour !important;
+    border-color: $secondaryColour !important;
+}
+
+.ant-checkbox-indeterminate .ant-checkbox-inner:after{
+    background-color: #000000;
+}

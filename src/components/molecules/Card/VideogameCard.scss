@@ -7,6 +7,18 @@ $secondaryColour: rgb(226, 51, 153);
 
 .ant-card{
     margin: 10px;
+    background-color: black;
+    border-color: black;
+    transition: all 0.25s;
+}
+
+.ant-card:hover{
+    transform: translateX(15px);
+    transform: translateY(-15px);
+    box-shadow: -6px 6px 0px 0px  $secondaryColour;
+    border-radius: 0;
+    
+    
 }
 
 .in-live {
@@ -38,4 +50,46 @@ $secondaryColour: rgb(226, 51, 153);
     &:hover {
         color: orange;
     }
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    margin-left: 50px;
+    color: rgb(122, 121, 121);
+}
+
+.tagDiv{
+   
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+ 
+}
+
+
+
+
+.tags{
+    background-color: rgb(32, 32, 32);
+    border-radius: 10px;
+
+    margin: 5px;
+    padding: 1px 7px 1px 7px;
+ 
+
+    color: rgb(192, 191, 191);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+    transition: all 0.25s;
+}
+
+.tags:hover{
+    background-color: rgb(58, 58, 58);;
+}
+
+.ant-card-meta-title{
+    color: white !important;
 }

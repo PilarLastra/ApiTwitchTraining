@@ -16,6 +16,9 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import { LogInTemplate } from '../LogInTemplate/LogInTemplate';
 import { HomeTemplate } from '../HomeTemplate/HomeTemplate';
 import { Spinning } from '../../../atoms/Spining/Spinning';
+import { ExploreTemplate } from '../ExploreTemplate/ExploreTemplate';
+import { AllCategoriesScreen } from '../../AllCategoriesScreen/AllCategoriesScreen';
+import { AllStreamsScreen } from '../../AllStreamsList/AllStreamsList';
 
 
 
@@ -76,12 +79,15 @@ export const MainTemplate = () => {
             <div id="searchBar">
                 <SearchBar />
             </div>
-            <div>
-                <NavBarButton title= "LOG IN" callback = {()=>{navigate("/login")}} /> {/*Consultar lo del map de botones*/}
+            <div className='navBarButtons'>
+              <div >
+                  <NavBarButton title= "LOG IN" callback = {()=>{navigate("/login")}} /> {/*Consultar lo del map de botones*/}
+              </div>
+              <div>
+                  <NavBarButton title= "SING UP" callback = {()=>{navigate("/login")}}/>
+              </div>
             </div>
-            <div>
-                <NavBarButton title= "SING UP" callback = {()=>{navigate("/login")}}/>
-            </div>
+            
           
             
        
@@ -94,6 +100,9 @@ export const MainTemplate = () => {
               <Route path='/' element={ <HomeTemplate />} />
               <Route path='/login' element={<LogInTemplate/>} />
               <Route path='/TopStreams' element={<StreamCardScreen/>} />
+              <Route path='/Explore' element={<AllCategoriesScreen/>} />
+              <Route path='/Categories' element={<AllCategoriesScreen/>} />
+              <Route path='/Streams' element={<AllStreamsScreen/>} />
               
             </Routes>
          

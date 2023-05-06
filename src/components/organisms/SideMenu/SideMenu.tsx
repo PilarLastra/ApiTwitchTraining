@@ -61,7 +61,7 @@ export const SideMenu = ( props:any ) => {
             <SideMenuButton title= "Top Streams" callback= {()=>{navigate("/TopStreams")}} />
           </div>
           <div className='home'>
-            <SideMenuButton title= "For You"/>
+            <SideMenuButton title= "Explorar" callback= {()=>{navigate("/Explore")}} />
     
           </div>
           <div>

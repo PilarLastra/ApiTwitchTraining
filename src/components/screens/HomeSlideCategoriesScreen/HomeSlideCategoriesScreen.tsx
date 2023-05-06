@@ -25,7 +25,7 @@ export const HomeSliderCategoriesScreen = () => {
         return(
             gamesData!.data.map((item, index) => ( 
             
-                  <GameCard games={item}/>
+                  <GameCard games={item} key= {item.id} />
             ))
           )
     }
@@ -38,8 +38,10 @@ export const HomeSliderCategoriesScreen = () => {
         
 
                     {/* Titulo de categoria (H1) */}
-                
-                        <StyleTitle  title="Categorias Populares"  />
+                <div className="title">
+                    <StyleTitle  title="Categorias Populares"  />
+                </div>
+                       
                 
                     
                     

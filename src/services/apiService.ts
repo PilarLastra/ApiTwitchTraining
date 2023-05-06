@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import { IStreamList } from "../Interfaces/IStreamList";
 import { IGameList } from "../Interfaces/IGameList";
+import { IUserList } from "../Interfaces/IUserList";
 
 export const SCOPES = "user:read:email";
 export const CLIENT_ID = 'os4f56sxpvljkkph063ln94l9znudp';
@@ -53,10 +54,10 @@ export class ApiClient {
         }
     }
 
-    public async getUserById({id}:{id:string}): Promise<IStreamList> {
+    public async getUserById({id}:{id:string}): Promise<IUserList> {
         
         try {
-            const result = await this.servicesAxiosInstance.get(`helix/user?id=${id}`)
+            const result = await this.servicesAxiosInstance.get(`helix/users?id=${id}`)
            
             return result.data;
             
@@ -65,6 +66,16 @@ export class ApiClient {
         }
     }
 
+    public async getAllCategories(): Promise<IGameList> {
+        try {
+            const result = await this.servicesAxiosInstance.get('helix/games')
+           
+            return result.data;
+            
+        } catch(e) {
+            return Promise.reject(e);
+        }
+    }
 
 
 }

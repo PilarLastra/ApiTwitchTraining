@@ -25,7 +25,7 @@ export const HomeSlideStreamByGameScreen = (props:any) => {
         return(
             streamsData!.data.map((item, index) => ( 
             
-                  <VideogameCard stream={item}/>
+                  <VideogameCard stream={item} key= {item.id}/>
             ))
           )
     }
@@ -39,8 +39,10 @@ export const HomeSlideStreamByGameScreen = (props:any) => {
         
 
                     {/* Titulo de categoria (H1) */}
-                
-                        <StyleTitle  title= {props.title} />
+                <div className="title">
+                    <StyleTitle  title= {props.title} />
+                </div>
+                        
                 
                     
                     

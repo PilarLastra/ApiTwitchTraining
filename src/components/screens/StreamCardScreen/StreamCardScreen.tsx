@@ -15,6 +15,8 @@ import { useGetUserById } from "../../../Hooks/useGetUsersById/useGetUsersById";
 export const StreamCardScreen = () => {
 
     const {streamsData, isLoading} = useGetStreems();
+   
+   
     
     const navigate = useNavigate();
 
@@ -22,13 +24,17 @@ export const StreamCardScreen = () => {
         token: { colorBgContainer },
       } = theme.useToken();
     
+  
 
     const videoGameCardArray = () => {
+
       
         return(
             streamsData!.data.map((item, index) => ( 
+              
             
                   <VideogameCard stream={item}/>
+                 
             ))
           )
     }
@@ -46,7 +52,10 @@ export const StreamCardScreen = () => {
    
 
             {/* Titulo de categoria (H1) */}
-          <StyleTitle title="Top Streams" />
+            <div className="title">
+              <StyleTitle title="Top Streams" />
+            </div>
+          
             
           <Content 
             style={{
